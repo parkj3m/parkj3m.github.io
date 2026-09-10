@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*=== Link text management ===*/
+
+a:link, a:visited {
+    text-decoration: none;
+} 
+
+a:hover, a:active {
+    text-decoration: none;
+}
+/* Link color of the base link */
+a:link {
+    color: #009b77
+}
+/* Link color of visited link */
+a:visited {
+    color: #009b77
+}
+/* Link color on cursor hover */
+a:hover {
+    color: #AC77FF
+}
+/* Link color when link is clicked */
+a:active {
+    color: #FF4747
+}
+
+/*=== span settings ===*/
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.arrow.arrow-spin {
+    transform: rotate(90deg);
+}
+
+/*=== div settings ===*/
+#div-main {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.div-folded {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}

@@ -1,0 +1,43 @@
+.selected-button {
+    fill: rgb(0, 185, 93);
+}
+
+#left-section {
+    width: 25%;
+    float: left;
+}
+#center-section {
+    width: 50%;
+    display: inline-block;
+}
+#center-left-section {
+    width: 50%;
+    float: left;
+}
+#center-right-section {
+    width: 50%;
+    float: right;
+}
+#right-section {
+    width: 25%;
+    float: right;
+}
+#axes-left-section {
+    width: 50%;
+    float: left;
+}
+#axes-right-section {
+    width: 50%;
+    float: right;
+}
+
+#title {
+    width: 700px;
+    text-align: center;
+    margin: auto;
+}
+#content {
+    width: 700px;
+    text-align: center;
+    margin: auto;
+}

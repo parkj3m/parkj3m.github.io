@@ -1,0 +1,219 @@
+<!--
+Page created based on
+src : https://www.youtube.com/watch?v=UXTOXF8Y2Cs
+("How to use JS Gamepad API and Build a Gamepad Tester in 12 minutes")
+
+Edited by mindou
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="css-controller-3.css">
+
+        <script src="js-controller-3.js" defer></script>
+        <!-- defer makes javascript execute after all of the html has loaded -->
+
+        <title>
+            gamepad tester v3
+        </title>
+    </head>
+    <body>
+        <div id="title">
+            <h2>Gamepad Tester</h2>
+            <hr><hr>
+        </div>
+        <div id="content">
+            <div id="controller-view-one">
+                <svg version="1.1" id="controller-one"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px" width="600px" height="450px" 
+                xml:space="preserve" viewBox="0 0 600 500">
+                    <g>
+                        <!-- Body Square -->
+                        <rect id="body" name="body" x="0" y="100" width="600" height="325" rx="50" ry="50"
+                        fill="black"/>
+
+                        <!-- UP -->
+                        <rect id="controller-b12" name="up"
+                        x="75" y="206.25" width="25" height="37.5"
+                        fill="rgb(100, 100, 100)"/>
+                        <!-- DOWN -->
+                        <rect id="controller-b13" name="down"
+                        x="75" y="281.25" width="25" height="37.5"
+                        fill="rgb(100, 100, 100)"/>
+                        <!-- LEFT -->
+                        <rect id="controller-b14" name="left"
+                        x="31.25" y="250" width="37.5" height="25"
+                        fill="rgb(100, 100, 100)"/>
+                        <!-- RIGHT -->
+                        <rect id="controller-b15" name="right"
+                        x="106.25" y="250" width="37.5" height="25"
+                        fill="rgb(100, 100, 100)"/>
+
+                        <!-- 
+                        Xbox : Y 
+                        PS : Triangle 
+                        Switch : X
+                        -->
+                        <circle id="controller-b3" cx="512.5" cy="212.5" r="20"
+                        fill="rgb(100, 100, 100)"/>
+                        <!--
+                        Xbox : B
+                        PS : Circle
+                        Switch : A
+                        -->
+                        <circle id="controller-b1" cx="562.5" cy="262.5" r="20"
+                        fill="rgb(100, 100, 100)"/>
+                        <!-- 
+                        Xbox : A
+                        PS : Cross
+                        Switch : B
+                        -->
+                        <circle id="controller-b0" cx="512.5" cy="312.5" r="20"
+                        fill="rgb(100, 100, 100)"/>
+                        <!-- 
+                        Xbox : X
+                        PS : Square
+                        Switch : Y
+                        -->
+                        <circle id="controller-b2" cx="462.5" cy="262.5" r="20"
+                        fill="rgb(100, 100, 100)"/>
+
+                        <!--
+                        Original : Start
+                        Xbox : Menu (Xbox One and newer) / Start (Xbox 360, Xbox)
+                        PS : Options (Dualshock 4 and newer) / Start (Dualshock 3 ~ PS Controller)
+                        Switch : (+)
+                        -->
+                        <rect id="controller-b8" name="select"
+                        x="200" y="200" width="25" height="25"
+                        fill="rgb(100, 100, 100)"/>
+                        <!--
+                        Original : Select 
+                        Xbox : View (Xbox One and newer) / Back (Xbox 360, Xbox)
+                        PS : Create (DualSense) / Share (Dualshock 4) / Select (Dualshock 3 ~ PS Controller)
+                        Switch : (-)
+                        -->
+                        <rect id="controller-b9" name="start"
+                        x="375" y="200" width="25" height="25"
+                        fill="rgb(100, 100, 100)"/>
+
+                        <!--
+                        Xbox : LB
+                        PS : L1
+                        Switch : L
+                        -->
+                        <rect id="controller-b4" x="50" y="150" width="75" height="25"
+                        fill="rgb(100, 100, 100)"/>
+                        <!--
+                        Xbox : RB
+                        PS : R1
+                        Switch : R
+                        -->
+                        <rect id="controller-b5" x="475" y="150" width="75" height="25"
+                        fill="rgb(100, 100, 100)"/>
+                        <!--
+                        Xbox : LT
+                        PS : L2
+                        Switch : ZR
+                        -->
+                        <rect id="controller-b6" x="50" y="75" width="75" height="50"
+                        fill="rgb(100, 100, 100)"/>
+                        <!--
+                        Xbox : RT
+                        PS : R2
+                        Switch : ZL
+                        -->
+                        <rect id="controller-b7" x="475" y="75" width="75" height="50"
+                        fill="rgb(100, 100, 100)"/>
+
+                        <!-- Left Stick Center -->
+                        <circle id="controller-b10-below" name="left-stick" cx="200.000" cy="375.000"
+                        data-original-x-position="200.000" data-original-y-position="375.000" r="25"
+                        stroke="rgb(100, 100, 100)" stroke-width="5" fill="black"/>
+                        <!--
+                        Xbox : Left Stick Button
+                        PS : L3
+                        Switch : Left Stick Press -->
+                        <circle id="controller-b10" name="left-stick" cx="200.000" cy="375.000"
+                        data-original-x-position="200.000" data-original-y-position="375.000" r="37.5"
+                        fill="rgb(100, 100, 100)"/>
+
+                        <!-- Right Stick Center -->
+                        <circle id="controller-b11-below" name="stick-right" cx="400.000" cy="375.000"
+                        data-original-x-position="400.000" data-original-y-position="375.000" r="25"
+                        stroke="rgb(100, 100, 100)" stroke-width="5" fill="black"/>
+                        <!--
+                        Xbox : Right Stick Button
+                        PS : R3
+                        Switch : Right Stick Press -->
+                        <circle id="controller-b11" name="stick-right" cx="400.000" cy="375.000"
+                        data-original-x-position="400.000" data-original-y-position="375.000" r="37.5"
+                        fill="rgb(100, 100, 100)"/>
+
+                        <!--
+                        Xbox : Xbox Button
+                        PS : PS Button
+                        Switch : Home Button
+                        -->
+                        <circle id="controller-b16" name="home" cx="300" cy="275" r="25"
+                        fill="rgb(100, 100, 100)"/>
+
+                    </g>
+                </svg>
+            </div>
+            <div id="controller-connection-status-div">
+                <hr>
+                <span id="controller-connection-status">gamepad not connected</span>
+                <hr>
+            </div>
+
+            <div id="left-section">
+                <div id="controller-b16-show">b16 : 0.00</div>
+                <div id="controller-b6-show">b6 : 0.00</div>
+                <div id="controller-b12-show">b12 : 0.00</div>
+                <div id="controller-b0-show">b0 : 0.00</div>
+                <br>
+            </div>
+            <div id="center-section">
+                <div id="center-left-section">
+                    <div id="controller-b8-show">b8 : 0.00</div>
+                    <div id="controller-b4-show">b4 : 0.00</div>
+                    <div id="controller-b13-show">b13 : 0.00</div>
+                    <div id="controller-b1-show">b1 : 0.00</div>
+                    <div id="controller-b10-show">b10 : 0.00</div>
+                </div>
+                <div id="center-right-section">
+                    <div id="controller-b9-show">b9 : 0.00</div>
+                    <div id="controller-b5-show">b5 : 0.00</div>
+                    <div id="controller-b14-show">b14 : 0.00</div>
+                    <div id="controller-b2-show">b2 : 0.00</div>
+                    <div id="controller-b11-show">b11 : 0.00</div>
+                </div>
+            </div>
+            <div id="right-section">
+                <br>
+                <div id="controller-b7-show">b7 : 0.00</div>
+                <div id="controller-b15-show">b15 : 0.00</div>
+                <div id="controller-b3-show">b3 : 0.00</div>
+                <br>
+            </div>
+            <div id="controller-stick-axes">
+                <div id="axes-left-section">
+                    axes left section
+                    <div id="controller-b10-show-leftright">b10 LeftRight : 0.00</div>
+                    <div id="controller-b10-show-updown">b10 UpDown : 0.00</div>
+                </div>
+                <div id="axes-right-section">
+                    axes right section
+                    <div id="controller-b11-show-leftright">b11 LeftRight : 0.00002</div>
+                    <div id="controller-b11-show-updown">b11 UpDown : 0.00</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
