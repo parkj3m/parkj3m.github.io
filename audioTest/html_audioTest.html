@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="css_audioTest.css">
+
+        <script src="js_audioTest.js" defer></script>
+        <!-- defer makes javascript execute after all of the html has loaded -->
+
+        <title>
+            Audio Bitrate Difference Test
+        </title>
+    </head>
+    <body>
+        <div id="title">
+            <h2>Audio Bitrate Difference Test</h2>
+            <hr>
+        </div>
+        <div id="content">
+            <div id="audio-test-warning">
+                <hr>
+                Choose the track you think that sounds better!<br>
+                Audio may start loud for you, be warry of your current sound level!<br>
+                Playback on the two tracks (for some reason) will not be exactly the same<br>
+                Please refrain from switching back and forth the between two tracks<br>
+                <hr>
+            </div>
+            <div id="start-test-div">
+                <button onclick="startTest()">Start Test</button>
+            </div>
+            <hr>
+            <div id="audio-test-div">
+                <button onclick="playAudio1Button()"> Play Audio 1</button>
+                <button onclick="playAudio2Button()"> Play Audio 2</button>
+                <br>
+                <button onclick="stopAudioAll()"><span style="font-size: 20px">⏹️</span></button>
+                <button onclick="startAudioAll()"><span style="font-size: 20px">▶️</span></button>
+                <button onclick="pauseAudioAll()"><span style="font-size: 20px">⏸️</span></button>
+                <br>
+                <button onclick="subtract5SecondsToAudioRevision()"><span style="font-size: 15px">-5 secs</span></button>
+                <button onclick="reduceAudioVolume()"><span style="font-size: 15px">Volume -</span></button>
+                <button onclick="increaseAudioVolume()"><span style="font-size: 15px">Volume +</span></button>
+                <button onclick="add5SecondsToAudioRevision()"><span style="font-size: 15px">+5 secs</span></button>
+                <br>
+                <br>
+                <button onclick="isCorrectAudio1()">1 Sounds Better</button>
+                <- Choose ->
+                <button onclick="isCorrectAudio2()">2 Sounds Better</button>
+            </div>
+            <hr>
+            <div id="assigned-audio-div">
+                <!--
+                <strike>Audio files will appear here.</strike><br><br>
+                <strike>! DO NOT TOUCH THE ACTUAL AUDIO CONTORLS !</strike><br>
+                <strike>Use the buttons above instead.</strike><br><br><br><br><br><br><br><br>
+                -->
+                <br><br><br><br><br><br>
+            </div>
+            <!-- <div id="audio-files-div">
+                <hr>
+                <audio controls id="audio-flac">
+                    <source src="audioFiles/gloriousDays/GLORIOUS_DAYS_flac.flac" type="audio/flac">
+                    If this is shown, your browser does not support this.
+                </audio><br>
+                <audio controls id="audio-320">
+                    <source src="audioFiles/gloriousDays/GLORIOUS_DAYS_320kbps.mp3" type="audio/mpeg">
+                    If this is shown, your browser does not support this.
+                </audio><br>
+                <audio controls id="audio-256">
+                    <source src="audioFiles/gloriousDays/FIMME.mp3" type="mpeg"> FIXME
+                    If this is shown, your browser does not support this.
+                </audio><br>
+                <audio controls id="audio-192">
+                    <source src="audioFiles/gloriousDays/GLORIOUS_DAYS_192kbps.mp3" type="audio/mpeg">
+                    If this is shown, your browser does not support this.
+                </audio><br>
+                <audio controls id="audio-128">
+                    <source src="audioFiles/gloriousDays/GLORIOUS_DAYS_128kbps.mp3" type="audio/mpeg">
+                    If this is shown, your browser does not support this.
+                </audio><br>
+            </div> -->
+            <div id="update-info">
+                <hr>
+                <span style="float: right">Last Update : 2026-09-19</span>
+            </div>
+        </div>
+    </body>
+</html>

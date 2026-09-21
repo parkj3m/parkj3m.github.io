@@ -1,0 +1,28 @@
+audio {
+    width: 650px;
+    height: 50px;
+}
+button {
+    width: 100px;
+    height: 50px;
+    margin: 3px;
+}
+
+.selected-button {
+    fill: rgb(0, 185, 93);
+}
+
+#title {
+    width: 700px;
+    text-align: center;
+    margin: auto;
+}
+#content {
+    width: 700px;
+    text-align: center;
+    margin: auto;
+}
+
+#audio-files-div {
+    text-align: center;
+}
