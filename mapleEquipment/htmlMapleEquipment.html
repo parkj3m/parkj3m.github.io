@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="cssMapleEquipment.css">
+        <script src="jsMapleEquipment.js" defer></script>
+
+        <title>
+            Maplestory Equipment Viewer
+        </title>
+    </head>
+
+    <body>
+        <div id="div-main">
+            <div id="div-header">
+                <h2>Maplestory Equipment Viewer</h2>
+                <hr><hr>
+            </div>
+            <div id="div-content">
+                <div id="div-top">
+                    <div id="div-profile">
+                        <label>Profile<select id="select-profile"></select></label>
+                        <button id="btn-newProfile">New Profile</button>
+                        <button id="btn-deleteProfile" class="btn-check">Delete Profile</button>
+                    </div>
+                    <div id="div-profileFields">
+                        <label>Character<input id="input-name"></label>
+                        <label>Job<input id="input-job"></label>
+                        <label>Level<input id="input-level" type="number" min="1"></label>
+                    </div>
+                    <div id="div-importExport">
+                        <button id="btn-import">Import JSON</button>
+                        <button id="btn-export">Export JSON</button>
+                        <span id="span-unsaved"></span>
+                    </div>
+                </div>
+
+                <div id="div-equipment">
+                    <div id="div-equipmentTitle">Equipment</div>
+                    <div id="div-equipmentGrid"></div>
+                </div>
+
+                <div id="div-side">
+                    <div id="div-summary">
+                        <div class="div-class-summary" id="summary"></div>
+                    </div>
+    
+                    <div id="div-editor"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="popup" hidden>
+            <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+                <h2 id="popup-title"></h2>
+                <div id="popup-top"></div>
+                <textarea id="popup-text" spellcheck="false"></textarea>
+                <div class="popup-actions" id="id-popup-action"></div>
+                <p id="popup-message"></p>
+            </div>
+        </div>
+        <br>
+    </body>
+</html>

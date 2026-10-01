@@ -1,0 +1,475 @@
+:root {
+    --white: #ffffff;
+    --gray: #e0e0e0;
+    --darkgray: #838383;
+    --red: #c80000;
+    --black: #000000;
+
+    --rare: #239bc7;
+    --epic: #9742f7;
+    --unique: #c9bc05;
+    --legendary: #52c102;
+    
+    --flame: #05b511;
+    --starforce: #ce9d08;
+    --scroll: #6531e0;
+
+    --slotsize: 64px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--white);
+}
+
+/*=== div/span Settings ===*/
+
+#div-main {
+    width: 90%;
+    max-width: 1080px;
+    margin: auto;
+}
+
+#div-header {
+    margin: auto;
+}
+#div-header h2 {
+    text-align: center;
+}
+
+#div-content {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+    align-items: start;
+    margin: auto;
+}
+
+@media (min-width: 860px) {
+    #div-content {
+        grid-template-columns: auto 540px;
+        grid-template-areas:
+            "top        top"
+            "equipment  side";
+        justify-items: stretch;
+    }
+    #div-top {
+        grid-area: top;
+    }
+    #div-equipment {
+        grid-area: equipment;
+    }
+    #div-side {
+        grid-area: side;
+    }
+}
+
+#div-top {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+/*=== Profile Related ===*/
+#div-profile, #div-profileFields, #div-importExport {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+#div-profile label, #div-profileFields label, #div-editor label {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 10px;
+    color: var(--darkgray);
+}
+#select-profile {
+    margin: 0px;
+    width: 120px;
+    height: 30px;
+    font-size: 15px;
+}
+#div-profileFields input {
+    width: 120px;
+    height: 30px;
+    font-size: 15px;
+}
+#div-profileFields input#input-level{
+    width: 60px;
+}
+#div-top button {
+    margin: 0;
+    margin-top: 14px;
+    height: 30px;
+}
+#span-unsaved {
+    font-size: 10px;
+    color: var(--red);
+}
+
+/*=== Equipment Related ===*/
+#div-equipment {
+    width: 100%;
+    border: 1px solid;
+}
+
+#div-equipmentTitle {
+    padding: 5px 10px;
+    border-bottom: 1px solid;
+    font-weight: bold;
+}
+
+#div-equipmentGrid {
+    display: grid;
+    grid-template-columns: repeat(7, var(--slotsize));
+    grid-auto-rows: var(--slotsize);
+    gap: 5px;
+    justify-content: center;
+    padding: 10px;
+    user-select: none;
+}
+
+
+/*=== Slots ===*/
+.slot {
+    width: var(--slotsize);
+    height: var(--slotsize);
+    background: var(--white);
+    border: 1px solid;
+    border-radius: 3px;
+    color: var(--darkgray);
+    font-size: 10px;
+    padding: 5px;
+    margin: 0px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.slot:hover {
+    background: var(--gray);
+}
+.slot.void {
+    visibility: hidden;
+}
+.slot.added {
+    color: var(--black);
+    border-width: 2px;
+}
+.slot.rare {
+    border-color: var(--rare);
+}
+.slot.epic {
+    border-color: var(--epic);
+}
+.slot.unique {
+    border-color: var(--unique);
+}
+.slot.legendary {
+    border-color: var(--legendary);
+}
+.slot.selected {
+    outline: 2px solid;
+    outline-offset: 1px;
+}
+.slot-name {
+    max-height: 3.5em;
+    overflow: hidden;
+    word-break: break-word;
+}
+.slot-star {
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+    font-size: 10px;
+}
+
+/*=== Editor ===*/
+#div-editor {
+    width: 100%;
+    border: 1px solid;
+    padding: 15px;
+    min-width: 0px;
+}
+#div-editor label input {
+    height: 30px;
+    font-size: 15px;
+}
+.editor-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.section-title {
+    font-size: 10px;
+    margin: 15px 0 5px;
+}
+.editor-empty {
+    color: var(--darkgray);
+    text-align: center;
+    padding: 30px 0px;
+}
+.row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+}
+.table-wrap {
+    overflow-x: auto;
+}
+table.stats {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 500px;
+}
+table.stats .total {
+    text-align: right;
+}
+table.stats th {
+    font-size: 10px;
+    color: var(--darkgray);
+    text-align: left;
+    padding: 5px;
+}
+table.stats td {
+    padding: 2px 4px;
+    border-top: 1px solid var(--gray);
+}
+table.stats td:first-child {
+    white-space: nowrap;
+}
+table.stats td.total {
+    font-weight: bold;
+}
+th.color-flame {
+    color: var(--flame);
+}
+th.color-starforce {
+    color: var(--starforce);
+}
+th.color-scroll {
+    color: var(--scroll);
+}
+.potential-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 5px;
+    align-items: start;
+}
+.potential-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.potential-line {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 80px;
+    gap: 5px;
+}
+.potential-line select, .potential-grid select {
+    margin: 0;
+}
+.potential-line.other {
+    grid-template-columns: 1.5fr 1fr;
+}
+
+/* Added summary and editor into one div */
+#div-side {
+    width: 100%;
+}
+
+/*=== Item Summary ===*/
+#div-summary {
+    width: 100%;
+    background-color: var(--white);
+    /* position: sticky; */
+    top: 0;
+    z-index: 1;
+    margin-bottom: 10px;
+}
+.div-class-summary {
+    border: 1px solid;
+    padding: 10px 15px;
+    font-size: 15px;
+}
+.stars {
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 10px;
+    line-height: 1.3;
+}
+.stars .off {
+    color: var(--gray);
+}
+.stars .gap {
+    display: inline-block; width: 5px;
+}
+.item-title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px;
+}
+.item-rank {
+    text-align: center;
+    font-size: 10px;
+    margin:5px;
+}
+.item-line {
+    margin: 2px;
+}
+.item-flame {
+    color: var(--flame);
+}
+.item-starforce {
+    color: var(--starforce);
+}
+.item-scroll {
+    color: var(--scroll);
+}
+.item-potential {
+    margin: 5px;
+}
+.item-potential-title {
+    font-size: 10px;
+    font-weight: bold;
+    margin: 1px;
+}
+.color-none {
+    color: var(--black);
+}
+.color-rare {
+    color: var(--rare);
+}
+.color-epic {
+    color: var(--epic);
+}
+.color-unique {
+    color: var(--unique);
+}
+.color-legendary {
+    color: var(--legendary);
+}
+.item-color-info {
+    font-size: 10px;
+    color: var(--darkgray);
+    margin-top: 5px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.item-empty {
+    color: var(--darkgray);
+    margin: 0;
+}
+
+/*=== Pop Up ===*/
+#popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    z-index: 2;
+}
+#popup[hidden] {
+    display: none;
+}
+.popup-box {
+    background: var(--white);
+    border: 1px solid;
+    padding: 15px;
+    width: min(600px, 100%);
+}
+.popup-box h2 {
+    font-size: 15px;
+}
+.popup-box label input[type="file"] {
+    margin-left: 5px;
+}
+.popup-box textarea {
+    min-height: 300px;
+    font-family: monospace;
+    font-size: 10px;
+    margin-top: 10px;
+}
+.popup-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin: 10px;
+    align-items: center;
+}
+#popup-message {
+    font-size: 10px;
+    color: var(--darkgray);
+    margin: 5px;
+    min-height: 1em;
+}
+
+/*=== Other ===*/
+
+button {
+    background: var(--white);
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    font: inherit;
+}
+button:hover {
+    background: var(--gray);
+}
+button.btn-check {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+select {
+    background: var(--white);
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 3px 6px;
+    margin: 5px;
+    font: inherit;
+}
+
+input, textarea {
+    background: var(--white);
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 3px 6px;
+    font: inherit;
+}
+input[type=number] {
+    width: 100%;
+}
+input:disabled, select:disabled {
+    color: var(--darkgray);
+    background: var(--gray);
+}
+
+textarea {
+    width: 100%;
+    min-height: 60px;
+    resize: vertical;
+}
