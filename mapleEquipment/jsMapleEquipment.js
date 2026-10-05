@@ -69,6 +69,8 @@ const POTENTIAL_STATS = [
 ];
 const POTENTIAL_STAT_MAP = Object.fromEntries(POTENTIAL_STATS.map(s => [s.k, s]));
 
+const DEFAULT_JSON_FILE = 'jsonMapleEquipment.json';
+
 /*=== Helper Variables ===*/
 // Easily get element using id
 const $ = id => document.getElementById(id);
@@ -766,6 +768,50 @@ $('btn-import').addEventListener('click', () => {
 	});
 });
 
+// Get the default json file
+function fetchDefaultJson() {
+	return fetch(DEFAULT_JSON_FILE, {cache: 'no-store'}).then(res => {
+		if(!res.ok) {
+			throw new Error('HTTP ' + res.status);
+		}
+		return res.text();
+	});
+}
+
+// Load default json file data
+function openLoadConfirmPopup(title, text) {
+	openPopup(title, '', [
+		['Load and Replace All Profiles', '', btn => {
+			let parsed;
+
+			try {
+				parsed = normalize(JSON.parse(popupText.value));
+			}
+			catch(err) {
+				popupMessage.textContent = 'Import Failed: ' + err.message;
+				return;
+			}
+
+			clickTwice(btn, 'Click Again to Replace Current Data', () => {
+				state = parsed;
+				selectedSlot = null;
+				setUnsaved(false);
+				renderAll();
+				closePopup();
+			});
+		}], ['Close', '', closePopup],
+	], text, true);
+}
+
+// Get default json data
+$('btn-loadDefault').addEventListener('click', () => {
+	fetchDefaultJson().then(text => {
+		openLoadConfirmPopup('Load ' + DEFAULT_JSON_FILE, text);
+	}).catch(err => {
+		openPopup('Load ' + DEFAULT_JSON_FILE, '', [['Close', '', closePopup]], 'Could not load "' + DEFAULT_JSON_FILE + '": ' + err.message, true);
+	});
+});
+
 
 // Renders entire page
 function renderAll() {
@@ -775,8 +821,20 @@ function renderAll() {
 	renderSummary();
 }
 
+// Gets default changes and "renders all"
+function start() {
+	fetchDefaultJson().then(text => {
+		state = normalize(JSON.parse(text));
+		setUnsaved(false);
+	}).catch(err => {
+		console.log('No default JSON auto-loaded (' + err.message + ').');
+	}).finally(() => {
+		renderAll();
+	});
+}
+
 // Start
-renderAll();
+start();
 
 
 
