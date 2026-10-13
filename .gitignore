@@ -2,3 +2,4 @@
 *.zip
 audioTest/audioFiles/
 mapleEquipment/*.json
+.vscode

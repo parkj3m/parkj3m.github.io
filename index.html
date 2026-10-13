@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width=device-width, initial-scale = 1">
     
         <link rel="stylesheet" type="text/css" href="styles.css">
-        <script src="jscript.js"></script>
 
         <title>
             main page
@@ -15,12 +14,21 @@
     <body>
         <div id="div-main">
             <h2>[ parkj3m.github.io ] Main Page</h2>
+            <span class="page-count" id="count"></span>
 
-            <hr> <!-- horizontal rule -->
-            <hr> <!-- horizontal rule -->
+            <hr>
+            <hr>
 
-            <h4><u>Project Pages</u></h4>
+            <h3><u>Project Pages</u></h3>
+
+            <input type="text" id="filter" placeholder="Filter pages" autocomplete="off" spellcheck="false">
+
+            <div id="list"></div>
+
+            <p id="empty" class="empty-msg" hidden>No pages match</p>
+
             
+            <!--
             <a href = "controller/html-controller-3.html" target = "_self">
                 Controller Input Testing (Symmetric Stick Layout)
             </a><br>
@@ -38,9 +46,12 @@
             </a><br>
             <br>
             <br>
+            -->
 
             <hr>
-            <hr> <!-- horizontal rule -->
+            <hr>
         </div>
+
+        <script src="jscript.js"></script>
     </body>
 </html>
