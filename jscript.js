@@ -16,6 +16,11 @@ const GROUPS = [
 // k: search keywords
 const PAGES = [
     {
+        g: 'games', t: 'PokeWordle?', d: 'A wordle type of quiz with pokemon!',
+        h: 'pokemonquiz/htmlpokemonquiz.html',
+        k: 'quiz pokemon wordle'
+    },
+    {
         g: 'tests', t: 'Controller Input Testing', d: 'A page to test out if your controller is \"working\" properly.',
         h: 'controller/html-controller-3.html',
         k: 'test controller gamepad button stick input'

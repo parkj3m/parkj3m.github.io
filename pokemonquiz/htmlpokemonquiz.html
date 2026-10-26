@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PokeWordle</title>
+        <link rel="stylesheet" href="csspokemonquiz.css">
+    </head>
+
+    <body>
+        <div class="div-main">
+            <header>
+                <h1>PokeWordle</h1>
+                <p class="subtext">Guess the Pokemon from Gen 1-2!</p>
+                <p>Guesses: <span id="guessCount">0</span> / <span id="maxGuesses">10</span></p>
+            </header>
+    
+            <div class="div-toggle">
+                <label class="label-toggle">
+                    <input type="checkbox" id="fairyToggle" checked>
+                    <span class="span-slider"></span>
+                </label>
+                <span id="fairyText">Fairy Type: ON (Gen 6+ Typing)</span>
+            </div>
+    
+            <form id="form-guess" autocomplete="off">
+                <input id="input-guess" list="pokemonList" placeholder="Enter a Pokemon name" required>
+                <datalist id="pokemonList"></datalist>
+                <button type="submit" id="btn-guess">Guess</button>
+            </form>
+            <p id="message" class="message" role="status"></p>
+    
+            <div class="div-guessList">
+                <div class="row header-row">
+                    <div>Pokemon</div>
+                    <div>Type 1</div>
+                    <div>Type 2</div>
+                    <div>Gender Ratio</div>
+                    <div>Base Stat Total</div>
+                    <div>Dex #</div>
+                </div>
+                <div id="guess-rows"></div>
+            </div>
+    
+            <button id="btn-newGame" class="hidden">New Game</button>
+    
+            <section class="explanation">
+                <span><i class="square correct"></i> Correct</span>
+                <span><i class="square incorrect"></i> Incorrect</span>
+                <span>▲ Answer is higher &nbsp; ▼ Answer is lower</span>
+            </section>
+        </div>
+    
+        <script src="jspokemondata.js"></script>
+        <script src="jspokemonquiz.js"></script>
+    </body>
+</html>
