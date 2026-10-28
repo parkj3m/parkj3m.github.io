@@ -7,7 +7,7 @@ const POKEMON = POKEMON_DATA.map((p) => {
     return {
         dex: p.dex,
         name: p.name,
-        fairy: { type1: p.types[0], type2: p.types[1] || "None" },
+        fairy: {type1: p.types[0], type2: p.types[1] || "None"},
         beforeFairy: {type1: oldTyping[0], type2: oldTyping[1] || "None"},
         malePercent: p.malePercent,
         bst: p.baseStatTotal,
@@ -222,6 +222,8 @@ function fitAll() {
 
 window.addEventListener("resize", fitAll);
 
+const GEN_TEXT = "Gen 1-4";
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -231,7 +233,7 @@ form.addEventListener("submit", (e) => {
     const guess = LOOKUP.get(normalize(rawInput));
 
     if(!guess) {
-        setMessage(`"${rawInput}" is misspelled or not in this version (Gen 1–2 only). Try again.`, "error");
+        setMessage(`"${rawInput}" is misspelled or not in this version (${GEN_TEXT}). Try again.`, "error");
         input.select();
 
         return;
@@ -262,7 +264,7 @@ form.addEventListener("submit", (e) => {
 
 fairyToggle.addEventListener("change", () => {
     fairyOn = fairyToggle.checked;
-    fairyText.textContent = fairyOn ? "Fairy Type: ON (Gen 6+ Typing)" : "Fairy Type: OFF (Gen 2–5 Typing)";
+    fairyText.textContent = fairyOn ? "Fairy Type: ON (Gen 6+ Typing)" : "Fairy Type: OFF";
     newGame();
     setMessage("Pokemon Type Changed — New Game Started.");
 });
